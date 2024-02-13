@@ -6,15 +6,14 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
-class Stemmer: ServiceProtocol {
-    private let words: [String]
-    
+class Stemmer: Service, ServiceProtocol {
     var langParts: [NSRegularExpression]
     var prefixes: NSRegularExpression
     
-    init(words: [String]) {
-        self.words = words
+    override init() {
         langParts = [
             try! NSRegularExpression(pattern: "(сь|ся|си)$"),
             try! NSRegularExpression(pattern: "(ив|ать|уть|ять|ють|у|ю|ав|али,|ши|е|ме|ати|ути|яти|юти|є|иш|ить|ила|ило|ите|или|иму|имеш|име|имуть|имете|имем)$"),
@@ -24,14 +23,11 @@ class Stemmer: ServiceProtocol {
         ]
         
         prefixes = try! NSRegularExpression(pattern: "^(без|роз|через|перед|понад|при|пре|прі|архі)")
-    }
-    
-    func processWords() -> [String] {
-        words.map { processWord($0) }
+        super.init()
     }
     
     func processWord(_ word: String) -> String {
-        if checked(word) {
+        if checked(word){
             var saveWord = word
             saveWord = prefixes.replace(saveWord, with: "")
             if langParts[0].matches(saveWord) {

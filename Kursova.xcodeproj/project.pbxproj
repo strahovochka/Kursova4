@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048DCED62B77E36B00F58137 /* extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DCED52B77E36B00F58137 /* extension+UIColor.swift */; };
+		048DCEDA2B78123300F58137 /* Words.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 048DCED82B78123300F58137 /* Words.xcdatamodeld */; };
+		048DCEDD2B7813A300F58137 /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DCEDB2B7813A300F58137 /* Word+CoreDataClass.swift */; };
+		048DCEDE2B7813A300F58137 /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048DCEDC2B7813A300F58137 /* Word+CoreDataProperties.swift */; };
 		04AFC8762B1FC16B00F3653B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFC8752B1FC16B00F3653B /* AppDelegate.swift */; };
 		04AFC8782B1FC16B00F3653B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFC8772B1FC16B00F3653B /* SceneDelegate.swift */; };
 		04AFC87A2B1FC16B00F3653B /* EnterWordsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFC8792B1FC16B00F3653B /* EnterWordsVC.swift */; };
@@ -24,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		048DCED52B77E36B00F58137 /* extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension+UIColor.swift"; sourceTree = "<group>"; };
+		048DCED92B78123300F58137 /* Words.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Words.xcdatamodel; sourceTree = "<group>"; };
+		048DCEDB2B7813A300F58137 /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
+		048DCEDC2B7813A300F58137 /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		04AFC8722B1FC16B00F3653B /* Kursova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kursova.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04AFC8752B1FC16B00F3653B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04AFC8772B1FC16B00F3653B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +61,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		048DCED72B78120C00F58137 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				04AFC87B2B1FC16B00F3653B /* Main.storyboard */,
+				04AFC87E2B1FC16D00F3653B /* Assets.xcassets */,
+				04AFC8802B1FC16D00F3653B /* LaunchScreen.storyboard */,
+				048DCED82B78123300F58137 /* Words.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		048DCEDF2B7813AD00F58137 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				048DCEDB2B7813A300F58137 /* Word+CoreDataClass.swift */,
+				048DCEDC2B7813A300F58137 /* Word+CoreDataProperties.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		04AFC8692B1FC16B00F3653B = {
 			isa = PBXGroup;
 			children = (
@@ -72,17 +100,17 @@
 		04AFC8742B1FC16B00F3653B /* Kursova */ = {
 			isa = PBXGroup;
 			children = (
+				048DCEDF2B7813AD00F58137 /* Data */,
+				048DCED72B78120C00F58137 /* Resources */,
 				04AFC88B2B1FD7E400F3653B /* Model */,
 				04AFC8752B1FC16B00F3653B /* AppDelegate.swift */,
 				04AFC8772B1FC16B00F3653B /* SceneDelegate.swift */,
 				04AFC8792B1FC16B00F3653B /* EnterWordsVC.swift */,
 				04AFC8892B1FD4CA00F3653B /* ResultVC.swift */,
-				04AFC87B2B1FC16B00F3653B /* Main.storyboard */,
-				04AFC87E2B1FC16D00F3653B /* Assets.xcassets */,
-				04AFC8802B1FC16D00F3653B /* LaunchScreen.storyboard */,
 				04AFC8832B1FC16D00F3653B /* Info.plist */,
 				04CE85022B20EB3700B9D12C /* TextTableViewCell.swift */,
 				04CE85032B20EB3700B9D12C /* TextTableViewCell.xib */,
+				048DCED52B77E36B00F58137 /* extension+UIColor.swift */,
 			);
 			path = Kursova;
 			sourceTree = "<group>";
@@ -172,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048DCEDA2B78123300F58137 /* Words.xcdatamodeld in Sources */,
 				04CE85042B20EB3700B9D12C /* TextTableViewCell.swift in Sources */,
 				04AFC87A2B1FC16B00F3653B /* EnterWordsVC.swift in Sources */,
 				04AFC88A2B1FD4CA00F3653B /* ResultVC.swift in Sources */,
@@ -179,8 +208,11 @@
 				04AFC8762B1FC16B00F3653B /* AppDelegate.swift in Sources */,
 				04AFC8782B1FC16B00F3653B /* SceneDelegate.swift in Sources */,
 				04CE84F92B209C4D00B9D12C /* ServiceProtocol.swift in Sources */,
+				048DCEDE2B7813A300F58137 /* Word+CoreDataProperties.swift in Sources */,
 				04CE84F72B209C3200B9D12C /* Stemmer.swift in Sources */,
 				04AFC88D2B1FD7F500F3653B /* Words.swift in Sources */,
+				048DCED62B77E36B00F58137 /* extension+UIColor.swift in Sources */,
+				048DCEDD2B7813A300F58137 /* Word+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +366,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -361,6 +394,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,6 +430,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		048DCED82B78123300F58137 /* Words.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				048DCED92B78123300F58137 /* Words.xcdatamodel */,
+			);
+			currentVersion = 048DCED92B78123300F58137 /* Words.xcdatamodel */;
+			path = Words.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 04AFC86A2B1FC16B00F3653B /* Project object */;
 }

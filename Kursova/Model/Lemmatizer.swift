@@ -6,14 +6,14 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
-class Lemmatizer: ServiceProtocol {
-    var words: [String]
+class Lemmatizer: Service, ServiceProtocol {
     var suffixes: [NSRegularExpression]
     var endings: NSRegularExpression
     
-    init(words: [String]) {
-        self.words = words
+    override init() {
         suffixes = [
             try! NSRegularExpression(pattern: "(к|ц)$"),
             try! NSRegularExpression(pattern: "(г|з)$"),
@@ -21,16 +21,13 @@ class Lemmatizer: ServiceProtocol {
         ]
         
         endings = try! NSRegularExpression(pattern: "(я|а|и|і|у|ою|ею|о|е|ю)$")
+        super.init()
     }
-    
-    func processWords() -> [String] {
-        words.map { processWord($0) }
-    }
-    
+
     func processWord(_ word: String) -> String {
         if checked(word) {
             var saveWord = endings.replace(word, with: "")
-            var save = saveWord
+            let save = saveWord
             if suffixes[0].matches(saveWord) {
                 saveWord = suffixes[0].replace(saveWord, with: "")
                 let checkReg = try! NSRegularExpression(pattern: "(ра|ни|ки|щи|ів|ри)$")

@@ -6,10 +6,65 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 protocol ServiceProtocol {
-    func processWords() -> [String]
     func processWord(_ word: String) -> String
+}
+
+class Service {
+    var appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    var context: NSManagedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    func isWordSaved(_ word: String) -> (Bool, Word?) {
+        let fetchRequest = NSFetchRequest<Word>(entityName: "Word")
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "content == %@", word)
+        do {
+            let count = try context.count(for: fetchRequest)
+            if count == 0 {
+                return (false, nil)
+            } else {
+                let savedWord: [Word]
+                do {
+                    savedWord = try context.fetch(fetchRequest)
+                    return (true, savedWord[0])
+                } catch let error as NSError {
+                    print("Could not fetch. \(error), \(error.userInfo)")
+                    return (false, nil)
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return (false, nil)
+        }
+    }
+    
+    func processWords(_ words: [String]) -> (lemmatized: [String], stemed: [String]) {
+        var lemmatizedWords = [String]()
+        var stemmedWords = [String]()
+        words.forEach {
+            let savedData = isWordSaved($0)
+            if savedData.0 {
+                lemmatizedWords.append(savedData.1?.lem ?? "")
+                stemmedWords.append(savedData.1?.stem ?? "")
+            } else {
+                let stemmedWord = Stemmer().processWord($0)
+                let lemmatizedWord = Lemmatizer().processWord($0)
+                lemmatizedWords.append(lemmatizedWord)
+                stemmedWords.append(stemmedWord)
+                if stemmedWord != "Not valid" && lemmatizedWord != "Not valid" {
+                    let saveWord = Word(entity: Word.entity(), insertInto: context)
+                    saveWord.content = $0
+                    saveWord.lem = lemmatizedWord
+                    saveWord.stem = stemmedWord
+                    appDelegate.saveContext()
+                }
+            }
+        }
+        return (lemmatizedWords, stemmedWords)
+    }
 }
 
 extension ServiceProtocol {
